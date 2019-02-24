@@ -49,7 +49,6 @@ public class Main {
         if(!allWordsExist){
             System.out.println("all words from text file are in the hashmap");
         }
-        System.out.println(h.get("be"));
         h.printHashMap(h);
 
 
