@@ -5,28 +5,29 @@
  */
 package assignment2algorithms;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Hallur
  */
 public class ArraySymbolTable {
 
-    private String[] keys;
-    private int[] values;
+    private ArrayList<String> keys = new ArrayList<>();
+    private ArrayList<Integer> values = new ArrayList<>();
     private int N;
 
-
-    public ArraySymbolTable(int capacity) {
-       keys = (String[]) new Comparable[capacity];
-       values = (int[]) new int[capacity];
+    public ArraySymbolTable(int N) {
+        this.N = N;
     }
 
-
+    
+    
     public String returnAll()
     {
-        for (int i = 0; i < keys.length; i++) {
+        for (int i = 0; i < keys.size(); i++) {
 
-            return keys[i].toString() + " : " + values[i];
+            return keys.get((i)).toString() + " : " + values.get(i);
         }
 
         return "Done";
@@ -39,7 +40,7 @@ public class ArraySymbolTable {
         while (lo <= hi)
         {
             int mid = lo + (hi - lo) / 2;
-            int cmp = key.compareTo(keys[mid]);
+            int cmp = key.compareTo(keys.get(mid));
             if (cmp < 0) hi = mid - 1;
             else if (cmp > 0) lo = mid + 1;
             else return mid;
@@ -50,20 +51,20 @@ public class ArraySymbolTable {
     public void put(String key)
     {        int i = rank(key);
     int val = 1;
-        if (i < N && keys[i].compareTo(key) == 0)
-        { values[i] = val;
+        if (i < N && keys.get(i).compareTo(key) == 0)
+        { values.set(i, val);
         return;
         }
 
         for (int j = N; j > i; j--)
         {
-            keys[j] = keys[j-1];
-        values[j] = values[j-1];
+            keys.set(j, keys.get(j-1));
+        values.set(j, values.get(j-1));
 
         }
-        keys[i] = key;
+        keys.set(i, key);
 
-        values[i] = values[i] + val;
+        values.set(i, values.get(i)+val);
         N++;
     }
 }
