@@ -23,25 +23,37 @@ public class Main {
         hardcodedWords.add("b");
         hardcodedWords.add("m");
         hardcodedWords.add("b");
-        
+
         String toBe = "to be or not to be, that is the question";
         toBe = toBe.replace(",", "");
         String[] splitted = toBe.split(" ");
-        System.out.println(splitted.length);                
+        System.out.println(splitted.length);
 
-        HashedSymbolTable<String, Integer> h = new HashedSymbolTable<>(splitted.length);
-        for (int i = 0; i < splitted.length; i++) {
-            String key = splitted[i];
-            if(h.contains(key)){
-                h.put(key, h.get(key)+1);
+        HashedSymbolTable<String, Integer> h = new HashedSymbolTable<>(textFileList.size());
+        for (int i = 0; i < textFileList.size(); i++) {
+            String key = textFileList.get(i);
+            if (h.contains(key)) {
+                h.put(key, h.get(key) + 1);
                 continue;
             }
             h.put(key, 1);
+        }  boolean allWordsExist = true;
+        for (int i = 0; i < textFileList.size(); i++) {
+          
+            if (!h.contains(textFileList.get(i))) {
+                System.out.println(textFileList.get(i) + " was not in there...");
+                allWordsExist = false;
+            }
+            
         }
+        if(!allWordsExist){
+            System.out.println("all words from text file are in the hashmap");
+        }
+        System.out.println(h.get("be"));
         h.printHashMap(h);
 
 
-    /*
+        /*
     linked symbol table is... scans the hashmap if the key is already in use, if it is then replace with new value,
     do not continue scanning if key has been found.
     
@@ -53,5 +65,6 @@ public class Main {
     balanced tree symbol table is...
     
     
-     */
-}}
+         */
+    }
+}

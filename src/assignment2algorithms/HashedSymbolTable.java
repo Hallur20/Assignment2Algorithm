@@ -98,6 +98,7 @@ public class HashedSymbolTable<Key, Value> {
             throw new IllegalArgumentException("argument to get() is null");
         }
         int i = hash(key);
+       
         return st[i].get(key);
     }
 
