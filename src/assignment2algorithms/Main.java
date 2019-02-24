@@ -8,9 +8,19 @@ public class Main {
     public static void main(String[] args) throws IOException {
         FileReaderLogic l = new FileReaderLogic();
         l.readFile(textFileList);
-        for (int i = 0; i < textFileList.size(); i++) {
+       /* for (int i = 0; i < textFileList.size(); i++) {
             System.out.println(textFileList.get(i));
+        }*/
+       BalancedTreeTable<String, Integer> treeT = new BalancedTreeTable<>();
+        for (int i = 0; i < textFileList.size(); i++) {
+            String key = textFileList.get(i);
+            if(!treeT.contains(key)){
+                treeT.put(key, 1);
+                continue;
+            }
+            treeT.put(key, treeT.get(key) +1);
         }
+        treeT.printTree(treeT);
     }
     
     /*

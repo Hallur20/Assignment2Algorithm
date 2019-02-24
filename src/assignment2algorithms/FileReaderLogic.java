@@ -38,26 +38,6 @@ public class FileReaderLogic {
             }
         }
         System.out.println("job complete");
-
-
-        
-        ArraySymbolTable s = new ArraySymbolTable(1);
-        String[] testclass = {"sdsssds", "sdsad", "as", "as", "b", "g", "s", "a"};
-
-         for (String item:testclass
-              ) {
-
-             s.put(item);
-         }
-
-         for (String item:testclass
-         ) {
-
-             System.out.println(s.returnAll());
-
-         }
-
-
      }
 
 
