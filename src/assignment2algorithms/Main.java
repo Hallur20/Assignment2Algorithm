@@ -1,6 +1,7 @@
 package assignment2algorithms;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Main {
@@ -8,9 +9,19 @@ public class Main {
     public static void main(String[] args) throws IOException {
         FileReaderLogic l = new FileReaderLogic();
         l.readFile(textFileList);
+
+        ArraySymbolTable<String> st = new ArraySymbolTable();
+
         for (int i = 0; i < textFileList.size(); i++) {
-            System.out.println(textFileList.get(i));
+            String key = textFileList.get(i);
+                st.put(key);
+            }
+
+        try {
+            st.getAll();
         }
+        catch(Exception e)
+        {}
     }
     
     /*

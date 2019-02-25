@@ -34,7 +34,7 @@ public class ArraySymbolTable<Key>  {
     }
 
     public String getAll() {
-        for (int i = 0; i < keys.length-1; i++)
+        for (int i = 0; i < keys.length; i++)
             System.out.println(keys[i].toString() + ":" + vals[i]);
 
         return "Done";
@@ -92,7 +92,7 @@ public class ArraySymbolTable<Key>  {
 
         // key is already in table
         if (i < n && String.valueOf(keys[i]).compareTo(String.valueOf(key)) == 0) {
-            vals[i] = val+1;
+            vals[i] = vals[i]+val;
             return;
         }
 
