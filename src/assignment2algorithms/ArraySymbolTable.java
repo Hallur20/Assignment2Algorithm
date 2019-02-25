@@ -11,36 +11,67 @@ import java.util.ArrayList;
  *
  * @author Hallur
  */
-public class ArraySymbolTable {
+import sun.awt.SunHints;
 
-    private ArrayList<String> keys = new ArrayList<>();
-    private ArrayList<Integer> values = new ArrayList<>();
-    private int N;
+import java.util.ArrayList;
+import java.util.Objects;
 
-    public ArraySymbolTable(int N) {
-        this.N = N;
+public class ArraySymbolTable<Key>  {
+    private static final int INIT_SIZE = 8;
+
+    private Key[] keys;     // symbol table keys
+    private Integer[] vals;   // symbol table values
+    private int n = 0;      // number of elements in symbol table
+
+    public ArraySymbolTable() {
+        keys = (Key[]) new Object[INIT_SIZE];
+        vals = (Integer[]) new Integer[INIT_SIZE];
+
     }
 
-    
-    
-    public String returnAll()
-    {
-        for (int i = 0; i < keys.size(); i++) {
+    public boolean isEmpty() {
+        return n == 0;
+    }
 
-            return keys.get((i)).toString() + " : " + values.get(i);
-        }
+    public String getAll() {
+        for (int i = 0; i < keys.length-1; i++)
+            System.out.println(keys[i].toString() + ":" + vals[i]);
 
         return "Done";
     }
 
 
+    private void resize(int capacity) {
+        Key[] tempk = (Key[]) new Object[capacity];
+        Integer[] tempv = (Integer[]) new Integer[capacity];
+        for (int i = 0; i < n; i++)
+            tempk[i] = keys[i];
+        for (int i = 0; i < n; i++)
+            tempv[i] = vals[i];
+        keys = tempk;
+        vals = tempv;
+    }
+
+    public void remove(Key key) {
+        for (int i = 0; i < n; i++) {
+            if (key.equals(keys[i])) {
+                keys[i] = keys[n-1];
+                vals[i] = vals[n-1];
+                keys[n-1] = null;
+                vals[n-1] = null;
+                n--;
+                return;
+            }
+        }
+    }
+
     public int rank(String key)
     {
-        int lo = 0, hi = N-1;
+        int lo = 0, hi = n-1;
         while (lo <= hi)
         {
             int mid = lo + (hi - lo) / 2;
-            int cmp = key.compareTo(keys.get(mid));
+            int cmp = key.compareTo(String.valueOf(keys[mid]));
             if (cmp < 0) hi = mid - 1;
             else if (cmp > 0) lo = mid + 1;
             else return mid;
@@ -48,23 +79,35 @@ public class ArraySymbolTable {
         return lo;
     }
 
-    public void put(String key)
-    {        int i = rank(key);
-    int val = 1;
-        if (i < N && keys.get(i).compareTo(key) == 0)
-        { values.set(i, val);
-        return;
+    public void put(Key key)  {
+        int val = 1;
+        if (key == null) throw new IllegalArgumentException("first argument to put() is null");
+
+        if (val == 0) {
+            remove(key);
+            return;
         }
 
-        for (int j = N; j > i; j--)
-        {
-            keys.set(j, keys.get(j-1));
-        values.set(j, values.get(j-1));
+        int i = rank(String.valueOf(key));
 
+        // key is already in table
+        if (i < n && String.valueOf(keys[i]).compareTo(String.valueOf(key)) == 0) {
+            vals[i] = val+1;
+            return;
         }
-        keys.set(i, key);
 
-        values.set(i, values.get(i)+val);
-        N++;
+        // insert new key-value pair
+        if (n == keys.length) resize(2*keys.length);
+
+        for (int j = n; j > i; j--)  {
+            keys[j] = keys[j-1];
+            vals[j] = vals[j-1];
+        }
+        keys[i] = key;
+        vals[i] = val;
+        n++;
+
     }
+
 }
+

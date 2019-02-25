@@ -39,23 +39,15 @@ public class FileReaderLogic {
         }
         System.out.println("job complete");
 
+        ArraySymbolTable s = new ArraySymbolTable();
 
-        
-        ArraySymbolTable s = new ArraySymbolTable(1);
-        String[] testclass = {"sdsssds", "sdsad", "as", "as", "b", "g", "s", "a"};
-
-         for (String item:testclass
+         for (String item:textFileList
               ) {
 
              s.put(item);
          }
 
-         for (String item:testclass
-         ) {
-
-             System.out.println(s.returnAll());
-
-         }
+       s.getAll();
 
 
      }
