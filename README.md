@@ -11,5 +11,6 @@ milliseconds: 2302043
 microseconds: 2302043461
 nanoseconds: 2302043461467
 </pre></code>
+<p>It took 38 minutes using linked list-based symbol table</p>
 <h2>Array symbol table</h2>
 <h2>Hashed symbol table </h2>
