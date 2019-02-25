@@ -9,6 +9,7 @@ import java.util.Queue;
  * @param <Key>
  * @param <Value>
  */
+//Linked symbol table
 public class SequentialSearchST<Key, Value> {
 
     private Node first;

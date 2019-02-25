@@ -2,12 +2,16 @@ package assignment2algorithms;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.time.StopWatch;
 
 public class Main {
 
+    private static ArrayList<String> textFileList = new ArrayList<>();
+
+    public static void main(String[] args) throws IOException {
         FileReaderLogic l = new FileReaderLogic();
         l.readFile(textFileList);
-
         //int minlen = Integer.parseInt(args[0]);
         SequentialSearchST<String, Integer> st = new SequentialSearchST<String, Integer>();
         //herrrr
@@ -33,9 +37,9 @@ public class Main {
         System.out.println("microseconds: " + sw.getTime(TimeUnit.MICROSECONDS));
         System.out.println("nanoseconds: " + sw.getTime(TimeUnit.NANOSECONDS));
     }
-    }
-    
-    /*
+}
+
+/*
     linked symbol table is... scans the hashmap if the key is already in use, if it is then replace with new value,
     do not continue scanning if key has been found.
     
@@ -47,5 +51,4 @@ public class Main {
     balanced tree symbol table is...
     
     
-    */
-}
+ */
