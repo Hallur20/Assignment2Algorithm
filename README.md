@@ -11,7 +11,6 @@ milliseconds: 3039984
 microseconds: 3039984148
 nanoseconds: 3039984148392
 </pre></code>
-<p>It took 38 minutes using the linked list-based symbol table</p>
 <h2>Array symbol table <a href="https://github.com/Hallur20/Assignment2Algorithm/blob/master/logs/LinkedLog">click for log</a></h2>
 <pre><code>
 time in milli seconds: 1168
