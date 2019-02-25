@@ -3,7 +3,7 @@
 
 <h2>Linked symbol table</h2>
 <code>
-hours: 0
+hours: 0</n>
 minutes: 38
 seconds: 2302
 milliseconds: 2302043
