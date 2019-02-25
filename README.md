@@ -32,3 +32,4 @@ time in milli seconds: 478
 time in micro seconds: 478186
 </code></pre>
 <h2>Conclusion</h2>
+<p>we can conclude with that the hashing table was the fastest, and the linked symbol table was the slowest.</p>
