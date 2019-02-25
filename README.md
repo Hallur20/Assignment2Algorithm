@@ -4,12 +4,12 @@
 <h2>Linked symbol table <a href="https://github.com/Hallur20/Assignment2Algorithm/blob/master/logs/ArraySymbolTableLog.rtf">click for log</a></h2>
 <p>Time output:
 <pre><code>
-hours: 0 
-minutes: 38
-seconds: 2302
-milliseconds: 2302043
-microseconds: 2302043461
-nanoseconds: 2302043461467
+hours: 0
+minutes: 50
+seconds: 3039
+milliseconds: 3039984
+microseconds: 3039984148
+nanoseconds: 3039984148392
 </pre></code>
 <p>It took 38 minutes using the linked list-based symbol table</p>
 <h2>Array symbol table <a href="https://github.com/Hallur20/Assignment2Algorithm/blob/master/logs/LinkedLog">click for log</a></h2>
