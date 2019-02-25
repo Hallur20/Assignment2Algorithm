@@ -1,7 +1,7 @@
 # Assignment2Algorithm
 <h2>This project is made by: Hallur vid Neyst, Murched Kayed, Mohammad Saad</h2>
 
-<h2>Linked symbol table</h2>
+<h2>Linked symbol table <a href="https://github.com/Hallur20/Assignment2Algorithm/blob/master/logs/ArraySymbolTableLog.rtf">click for log</a></h2>
 <p>Time output:
 <pre><code>
 hours: 0 
@@ -12,7 +12,7 @@ microseconds: 2302043461
 nanoseconds: 2302043461467
 </pre></code>
 <p>It took 38 minutes using the linked list-based symbol table</p>
-<h2>Array symbol table</h2>
+<h2>Array symbol table <a href="https://github.com/Hallur20/Assignment2Algorithm/blob/master/logs/LinkedLog.file">click for log</a></h2>
 <pre><code>
 time in milli seconds: 1168
 time in micro seconds: 1168721
