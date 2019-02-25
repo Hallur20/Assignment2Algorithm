@@ -14,3 +14,4 @@ nanoseconds: 2302043461467
 <p>It took 38 minutes using the linked list-based symbol table</p>
 <h2>Array symbol table</h2>
 <h2>Hashed symbol table </h2>
+<h2>Conclusion</h2>
