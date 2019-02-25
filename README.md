@@ -1,6 +1,11 @@
 # Assignment2Algorithm
 <h2>This project is made by: Hallur vid Neyst, Murched Kayed, Mohammad Saad</h2>
 
+<h2>Instructions</h2>
+<p>In order to run this project, first clone and then open the it in your favorite java ide. Then navigate to the main class and out-comment the symbol table you wish to see in action. </p>
+  <h4>Note</h4>
+  <p>
+  If by any chance the stopwatch does not work, then you can add the provied jar file:commons-lang3-3.8.1 to the libraries folder in the project. </p>
 <h2>Linked symbol table <a href="https://github.com/Hallur20/Assignment2Algorithm/blob/master/logs/ArraySymbolTableLog.rtf">click for log</a></h2>
 <p>Time output:
 <pre><code>
