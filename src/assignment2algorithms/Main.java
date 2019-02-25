@@ -4,13 +4,35 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
-    private static ArrayList<String> textFileList = new ArrayList<>();
-    public static void main(String[] args) throws IOException {
+
         FileReaderLogic l = new FileReaderLogic();
         l.readFile(textFileList);
+
+        //int minlen = Integer.parseInt(args[0]);
+        SequentialSearchST<String, Integer> st = new SequentialSearchST<String, Integer>();
+        //herrrr
+        StopWatch sw = new StopWatch();
+        sw.start();
         for (int i = 0; i < textFileList.size(); i++) {
-            System.out.println(textFileList.get(i));
+            String key = textFileList.get(i);
+            if (st.contains(key)) {
+                st.put(key, st.get(key) + 1);
+                continue;
+            }
+            st.put(key, 1);
         }
+        sw.stop();
+        System.out.println(st);
+        for (String s : st.keys()) {
+            System.out.println(s + " " + st.get(s));
+        }
+        System.out.println("hours: " + sw.getTime(TimeUnit.HOURS));
+        System.out.println("minutes: " + sw.getTime(TimeUnit.MINUTES));
+        System.out.println("seconds: " + sw.getTime(TimeUnit.SECONDS));
+        System.out.println("milliseconds: " + sw.getTime(TimeUnit.MILLISECONDS));
+        System.out.println("microseconds: " + sw.getTime(TimeUnit.MICROSECONDS));
+        System.out.println("nanoseconds: " + sw.getTime(TimeUnit.NANOSECONDS));
+    }
     }
     
     /*
