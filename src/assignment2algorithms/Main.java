@@ -1,8 +1,11 @@
 package assignment2algorithms;
 
+import org.apache.commons.lang3.time.StopWatch;
+
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     private static ArrayList<String> textFileList = new ArrayList<>();
@@ -12,19 +15,28 @@ public class Main {
 
         ArraySymbolTable<String> st = new ArraySymbolTable();
 
+
+        StopWatch sw = new StopWatch();
+        sw.start();
         for (int i = 0; i < textFileList.size(); i++) {
             String key = textFileList.get(i);
                 st.put(key);
             }
+        sw.stop();
+
 
         try {
             st.getAll();
         }
         catch(Exception e)
         {}
-    }
-    
-    /*
+
+
+        System.out.println("time in milli seconds: "+sw.getTime(TimeUnit.MILLISECONDS));
+        System.out.println("time in micro seconds: "+sw.getTime(TimeUnit.MICROSECONDS));
+        System.out.println("time in nano seconds: "+sw.getTime(TimeUnit.NANOSECONDS));
+
+     /*
     linked symbol table is... scans the hashmap if the key is already in use, if it is then replace with new value,
     do not continue scanning if key has been found.
     
@@ -37,4 +49,4 @@ public class Main {
     
     
     */
-}
+}}
