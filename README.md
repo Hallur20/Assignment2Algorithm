@@ -2,6 +2,7 @@
 <h1>This project is made by: Hallur vid Neyst, Murched Kayed, Mohammad Saad</h1>
 
 <h2>Linked symbol table</h2>
+<p>Time output:
 <pre><code>
 hours: 0 
 minutes: 38
