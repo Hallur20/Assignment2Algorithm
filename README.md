@@ -3,12 +3,18 @@
 
 <h2>Linked symbol table</h2>
 <code>
-hours: 0</n>
+hours: 0
+  
 minutes: 38
+
 seconds: 2302
+
 milliseconds: 2302043
+
 microseconds: 2302043461
+
 nanoseconds: 2302043461467
+
   </code>
 <h2>Array symbol table</h2>
 <h2>Hashed symbol table </h2>
