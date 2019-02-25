@@ -30,7 +30,7 @@ public class FileReaderLogic {
             for (int j = 0; j < arr.length; j++) {
 
                 if (!arr[j].isEmpty()) {
-                    arr[j] = arr[j].replaceAll("(?:--|[\\/#$-_,.()`:;!*{}~|\"?<>&'c])", "");
+                    arr[j] = arr[j].replaceAll("\\P{L}", "");
                     if (!arr[j].isEmpty()) {
                         textFileList.add(arr[j].toLowerCase());
                     }

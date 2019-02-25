@@ -3,6 +3,8 @@ package assignment2algorithms;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.time.StopWatch;
 
 public class Main {
 
@@ -30,6 +32,8 @@ public class Main {
         System.out.println(splitted.length);
 
         HashedSymbolTable<String, Integer> h = new HashedSymbolTable<>(textFileList.size());
+        StopWatch s = new StopWatch();
+        s.start();
         for (int i = 0; i < textFileList.size(); i++) {
             String key = textFileList.get(i);
             if (h.contains(key)) {
@@ -37,7 +41,9 @@ public class Main {
                 continue;
             }
             h.put(key, 1);
-        }  boolean allWordsExist = true;
+        }
+        s.stop();
+        boolean allWordsExist = true;
         for (int i = 0; i < textFileList.size(); i++) {
           
             if (!h.contains(textFileList.get(i))) {
@@ -47,10 +53,13 @@ public class Main {
             
         }
         if(!allWordsExist){
-            System.out.println("all words from text file are in the hashmap");
+            System.out.println("if this is printed, some words were missing...");
         }
         h.printHashMap(h);
-
+        System.out.println("time in minutes: " + s.getTime(TimeUnit.MINUTES));
+        System.out.println("time in seconds: "+s.getTime(TimeUnit.SECONDS));
+        System.out.println("time in milli seconds: " + s.getTime(TimeUnit.MILLISECONDS));
+        System.out.println("time in micro seconds: " + s.getTime(TimeUnit.MICROSECONDS));
 
         /*
     linked symbol table is... scans the hashmap if the key is already in use, if it is then replace with new value,
