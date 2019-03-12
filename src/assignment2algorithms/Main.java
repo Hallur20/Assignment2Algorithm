@@ -29,7 +29,7 @@ public class Main {
         //timeArraySymbolTable(arraySymbolTable);
         
                /*Balanced Tree Symnbol Table*/
-        //timeBalancedTreeSymbolTable(balancedTreeTable);
+        timeBalancedTreeSymbolTable(balancedTreeTable);
     }
 
     public static void timeHashedSymbolTable(HashedSymbolTable<String, Integer> m) {

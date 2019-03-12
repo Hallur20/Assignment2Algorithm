@@ -20,55 +20,29 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         }
     }
 
-    /**
-     * Initializes an empty symbol table.
-     */
     public BalancedTreeTable() {
     }
 
-    /**
-     * Returns true if this symbol table is empty.
-     * @return {@code true} if this symbol table is empty; {@code false} otherwise
-     */
+
     public boolean isEmpty() {
         return size() == 0;
     }
 
-    /**
-     * Returns the number of key-value pairs in this symbol table.
-     * @return the number of key-value pairs in this symbol table
-     */
     public int size() {
         return size(root);
     }
 
-    // return number of key-value pairs in BST rooted at x
     private int size(Node x) {
         if (x == null) return 0;
         else return x.size;
     }
 
-    /**
-     * Does this symbol table contain the given key?
-     *
-     * @param  key the key
-     * @return {@code true} if this symbol table contains {@code key} and
-     *         {@code false} otherwise
-     * @throws IllegalArgumentException if {@code key} is {@code null}
-     */
+
     public boolean contains(Key key) {
         if (key == null) throw new IllegalArgumentException("argument to contains() is null");
         return get(key) != null;
     }
 
-    /**
-     * Returns the value associated with the given key.
-     *
-     * @param  key the key
-     * @return the value associated with the given key if the key is in the symbol table
-     *         and {@code null} if the key is not in the symbol table
-     * @throws IllegalArgumentException if {@code key} is {@code null}
-     */
     public Value get(Key key) {
         return get(root, key);
     }
@@ -81,16 +55,7 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         else              return x.val;
     }
 
-    /**
-     * Inserts the specified key-value pair into the symbol table, overwriting the old 
-     * value with the new value if the symbol table already contains the specified key.
-     * Deletes the specified key (and its associated value) from this symbol table
-     * if the specified value is {@code null}.
-     *
-     * @param  key the key
-     * @param  val the value
-     * @throws IllegalArgumentException if {@code key} is {@code null}
-     */
+
     public void put(Key key, Value val) {
         if (key == null) throw new IllegalArgumentException("first argument to put() is null");
         if (val == null) {
@@ -112,11 +77,7 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
     }
 
 
-    /**
-     * Removes the smallest key and associated value from the symbol table.
-     *
-     * @throws NoSuchElementException if the symbol table is empty
-     */
+
     public void deleteMin() {
         if (isEmpty()) throw new NoSuchElementException("Symbol table underflow");
         root = deleteMin(root);
@@ -130,11 +91,6 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         return x;
     }
 
-    /**
-     * Removes the largest key and associated value from the symbol table.
-     *
-     * @throws NoSuchElementException if the symbol table is empty
-     */
     public void deleteMax() {
         if (isEmpty()) throw new NoSuchElementException("Symbol table underflow");
         root = deleteMax(root);
@@ -148,13 +104,6 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         return x;
     }
 
-    /**
-     * Removes the specified key and its associated value from this symbol table     
-     * (if the key is in this symbol table).    
-     *
-     * @param  key the key
-     * @throws IllegalArgumentException if {@code key} is {@code null}
-     */
     public void delete(Key key) {
         if (key == null) throw new IllegalArgumentException("argument to delete() is null");
         root = delete(root, key);
@@ -180,12 +129,6 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
     } 
 
 
-    /**
-     * Returns the smallest key in the symbol table.
-     *
-     * @return the smallest key in the symbol table
-     * @throws NoSuchElementException if the symbol table is empty
-     */
     public Key min() {
         if (isEmpty()) throw new NoSuchElementException("called min() with empty symbol table");
         return min(root).key;
@@ -196,12 +139,6 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         else                return min(x.left); 
     } 
 
-    /**
-     * Returns the largest key in the symbol table.
-     *
-     * @return the largest key in the symbol table
-     * @throws NoSuchElementException if the symbol table is empty
-     */
     public Key max() {
         if (isEmpty()) throw new NoSuchElementException("called max() with empty symbol table");
         return max(root).key;
@@ -212,14 +149,6 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         else                 return max(x.right); 
     } 
 
-    /**
-     * Returns the largest key in the symbol table less than or equal to {@code key}.
-     *
-     * @param  key the key
-     * @return the largest key in the symbol table less than or equal to {@code key}
-     * @throws NoSuchElementException if there is no such key
-     * @throws IllegalArgumentException if {@code key} is {@code null}
-     */
     public Key floor(Key key) {
         if (key == null) throw new IllegalArgumentException("argument to floor() is null");
         if (isEmpty()) throw new NoSuchElementException("called floor() with empty symbol table");
@@ -238,14 +167,6 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         else return x; 
     } 
 
-    /**
-     * Returns the smallest key in the symbol table greater than or equal to {@code key}.
-     *
-     * @param  key the key
-     * @return the smallest key in the symbol table greater than or equal to {@code key}
-     * @throws NoSuchElementException if there is no such key
-     * @throws IllegalArgumentException if {@code key} is {@code null}
-     */
     public Key ceiling(Key key) {
         if (key == null) throw new IllegalArgumentException("argument to ceiling() is null");
         if (isEmpty()) throw new NoSuchElementException("called ceiling() with empty symbol table");
@@ -266,14 +187,6 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         return ceiling(x.right, key); 
     } 
 
-    /**
-     * Return the kth smallest key in the symbol table.
-     *
-     * @param  k the order statistic
-     * @return the kth smallest key in the symbol table
-     * @throws IllegalArgumentException unless {@code k} is between 0 and
-     *        <em>N</em> &minus; 1
-     */
     public Key select(int k) {
         if (k < 0 || k >= size()) throw new IllegalArgumentException();
         Node x = select(root, k);
@@ -289,19 +202,12 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         else            return x; 
     } 
 
-    /**
-     * Return the number of keys in the symbol table strictly less than {@code key}.
-     *
-     * @param  key the key
-     * @return the number of keys in the symbol table strictly less than {@code key}
-     * @throws IllegalArgumentException if {@code key} is {@code null}
-     */
     public int rank(Key key) {
         if (key == null) throw new IllegalArgumentException("argument to rank() is null");
         return rank(key, root);
     } 
 
-    // Number of keys in the subtree less than key.
+
     private int rank(Key key, Node x) {
         if (x == null) return 0; 
         int cmp = key.compareTo(x.key); 
@@ -310,26 +216,11 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         else              return size(x.left); 
     } 
 
-    /**
-     * Returns all keys in the symbol table as an {@code Iterable}.
-     * To iterate over all of the keys in the symbol table named {@code st},
-     * use the foreach notation: {@code for (Key key : st.keys())}.
-     *
-     * @return all keys in the symbol table
-     */
     public Iterable<Key> keys() {
         return rangeSearch(min(), max());
     }
 
-    /**
-     * Returns all keys in the symbol table in the given range,
-     * as an {@code Iterable}.
-     *
-     * @return all keys in the sybol table between {@code lo} 
-     *         (inclusive) and {@code hi} (exclusive)
-     * @throws IllegalArgumentException if either {@code lo} or {@code hi}
-     *         is {@code null}
-     */
+
     public Iterable<Key> rangeSearch(Key lo, Key hi) {
         if (lo == null) throw new IllegalArgumentException("first argument to keys() is null");
         if (hi == null) throw new IllegalArgumentException("second argument to keys() is null");
@@ -348,14 +239,7 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         if (cmphi > 0) keys(x.right, queue, lo, hi); 
     } 
 
-    /**
-     * Returns the number of keys in the symbol table in the given range.
-     *
-     * @return the number of keys in the sybol table between {@code lo} 
-     *         (inclusive) and {@code hi} (exclusive)
-     * @throws IllegalArgumentException if either {@code lo} or {@code hi}
-     *         is {@code null}
-     */
+
     public int rangeCount(Key lo, Key hi) {
         if (lo == null) throw new IllegalArgumentException("first argument to size() is null");
         if (hi == null) throw new IllegalArgumentException("second argument to size() is null");
@@ -365,11 +249,7 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         else              return rank(hi) - rank(lo);
     }
 
-    /**
-     * Returns the height of the BST (for debugging).
-     *
-     * @return the height of the BST (a 1-node tree has height 0)
-     */
+
     public int height() {
         return height(root);
     }
@@ -378,11 +258,6 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         return 1 + Math.max(height(x.left), height(x.right));
     }
 
-    /**
-     * Returns the keys in the BST in level order (for debugging).
-     *
-     * @return the keys in the BST in level order traversal
-     */
     public Iterable<Key> levelOrder() {
         Queue<Key> keys = new LinkedList<Key>();
         Queue<Node> queue = new LinkedList<Node>();
@@ -397,9 +272,6 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         return keys;
     }
 
-  /*************************************************************************
-    *  Check integrity of BST data structure.
-    ***************************************************************************/
     private boolean check() {
         if (!isBST())            System.out.println("Not in symmetric order");
         if (!isSizeConsistent()) System.out.println("Subtree counts not consistent");
@@ -407,15 +279,12 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         return isBST() && isSizeConsistent() && isRankConsistent();
     }
 
-    // does this binary tree satisfy symmetric order?
-    // Note: this test also ensures that data structure is a binary tree since order is strict
+
     private boolean isBST() {
         return isBST(root, null, null);
     }
 
-    // is the tree rooted at x a BST with all keys strictly between min and max
-    // (if min or max is null, treat as empty constraint)
-    // Credit: Bob Dondero's elegant solution
+
     private boolean isBST(Node x, Key min, Key max) {
         if (x == null) return true;
         if (min != null && x.key.compareTo(min) <= 0) return false;
@@ -423,7 +292,7 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         return isBST(x.left, min, x.key) && isBST(x.right, x.key, max);
     } 
 
-    // are the size fields correct?
+
     private boolean isSizeConsistent() { return isSizeConsistent(root); }
     private boolean isSizeConsistent(Node x) {
         if (x == null) return true;
@@ -431,7 +300,6 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         return isSizeConsistent(x.left) && isSizeConsistent(x.right);
     } 
 
-    // check that ranks are consistent
     private boolean isRankConsistent() {
         for (int i = 0; i < size(); i++)
             if (i != rank(select(i))) return false;
@@ -440,11 +308,6 @@ public class BalancedTreeTable<Key extends Comparable<Key>, Value> {
         return true;
     }
 
-
-    /**
-     * Unit tests the {@code BST} data type.
-     */
-    
     public void printTree(BalancedTreeTable<String, Integer> bt){
         String startAt = "{";
         for (String name : bt.keys()) {
