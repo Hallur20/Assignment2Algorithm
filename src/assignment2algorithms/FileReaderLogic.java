@@ -19,7 +19,8 @@ import java.util.List;
  * @author Hallur
  */
 public class FileReaderLogic {
-     public void readFile(ArrayList<String> textFileList) throws FileNotFoundException, IOException {
+
+    public void readFile(ArrayList<String> textFileList) throws FileNotFoundException, IOException {
         List<String> lines;
         lines = Collections.emptyList();
         lines = Files.readAllLines(Paths.get(System.getProperty("user.dir") + "\\src\\file\\Shakespeare_Complete_Works.txt"), StandardCharsets.UTF_8);
